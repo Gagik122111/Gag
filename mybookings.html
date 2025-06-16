@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <title>Իմ Ամրագրումները</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Տվյալների ստացում LocalStorage-ից
+    function loadBookings() {
+      const bookings = JSON.parse(localStorage.getItem("myBookings")) || [];
+      const container = document.getElementById("bookingList");
+
+      if (bookings.length === 0) {
+        container.innerHTML = "<p>Դուք դեռ չունեք ամրագրումներ։</p>";
+      } else {
+        const ul = document.createElement("ul");
+        bookings.forEach(tour => {
+          const li = document.createElement("li");
+          li.textContent = `Տուրը՝ ${tour.name}, Ամսաթիվ՝ ${tour.date}`;
+          ul.appendChild(li);
+        });
+        container.appendChild(ul);
+      }
+    }
+
+    window.onload = loadBookings;
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Իմ Ամրագրած Տուրերը</h1>
+    <nav>
+      <a href="index1.html">Գլխավոր</a>
+      
+      <a href="book1.html">Ամրագրել</a>
+      
+      <a href="attractions1.html">Տեսարժան վայրեր</a>
+      
+      <a href="top101.html">Top 10</a>
+      
+      <a href="tours1.html">Տուր փաթեթներ</a>
+     
+      <a href="contact1.html">Կապ</a>
+  
+      <a href="mybookings.html">Իմ Ամրագրած Տուրերը</a>
+
+    </nav>
+  </header>
+
+  <main>
+    <h2>Ձեր Ամրագրումները</h2>
+    <div id="bookingList"></div>
+  </main>
+
+  <footer>
+    <p>© 2025 Հայաստանի Տուրիզմ</p>
+  </footer>
+</body>
+</html>
